@@ -40,9 +40,8 @@ export const Tableau = () => {
             Valeur la plus haute : 62976,65 € le 19/10/21
           </p>
         </div>
-        <div className="w-2/3 p-4 bg-gray-400 rounded-lg mr-2 ml-2">
-          Colonne 2
-        </div>
+
+        <div className="w-2/3 p-4 bg-white rounded-lg mr-2 ml-2"></div>
       </div>
     </>
   );
