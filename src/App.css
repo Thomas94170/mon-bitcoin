@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@font-face {
+  font-family: "Prosto One";
+  src: url("../src/fonts/ProstoOne-Regular.ttf") format("woff2")
+
+}
+body {
+  background-color: #282c34;
+  font-family : 'Prosto One', cursive ;
+  color: white;
+}
+
+.valeur{
+  color: #282c34;
+}
