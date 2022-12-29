@@ -1,15 +1,7 @@
 const express = require("express");
 const app = express();
+require("./models/dbConfig");
 
-app.get("/", (req, res) => {
-  return res.sendFile(__dirname + "/index.html");
-});
+app.listen(5500, () => console.log("server lancé: 5500"));
 
-app.get("/form", (req, res) => {
-  console.log(req.query);
-  return res.status(200).send("reçu");
-});
-
-app.listen(90, () => {
-  console.log("connecté");
-});
+//react-scripts start
