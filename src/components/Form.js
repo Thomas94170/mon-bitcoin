@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Form = () => {
-  // je mets ici mon code
+  // je mets ici mon code pour la soumission du form
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
