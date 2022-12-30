@@ -1,6 +1,29 @@
+import { text } from "body-parser";
 import React from "react";
 
 export const Form = () => {
+  // je mets ici mon code
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    pseudo: "",
+    telephone: "",
+  });
+
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("http://localhost:5500/", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+
   return (
     <>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -16,7 +39,7 @@ export const Form = () => {
               <div class="mt-1">
                 <input
                   id="text"
-                  name="p1"
+                  name="text"
                   type="text"
                   autocomplete="text"
                   required
