@@ -13,9 +13,9 @@ export const Form = () => {
   } = useForm();
   const onSubmit = (formulaire) => {
     console.log(formulaire);
-    // alert(JSON.stringify(formulaire));
+    alert(JSON.stringify(formulaire));
     axios
-      .post("http://localhost:5500/", formulaire)
+      .post("http://localhost:5500/infos", formulaire)
       .then((response) => {
         console.log(response);
       })

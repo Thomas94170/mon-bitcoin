@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CronJob } from "cron";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -68,6 +69,22 @@ export const Tableau = () => {
   }, []);
 
   //graphique
+
+  let cronJob = new CronJob(
+    "0 0 11 * * *",
+    function () {
+      fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const price = data.bpi.EUR.rate;
+          console.log(price);
+        });
+    },
+    null,
+    true,
+    "America/Los_Angeles"
+  );
+  cronJob.start();
 
   return (
     <>
