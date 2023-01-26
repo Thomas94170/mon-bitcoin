@@ -11,40 +11,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-// import faker from "faker";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export const options = {
-  responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: "Cours du Bitcoin récent",
-    },
-  },
-};
-const labels = ["Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Son cours en $",
-      data: ["16792", "19424", "18576 ", "17143", "19425", "20487 ", "17175"],
-      borderColor: "#A8201A",
-      backgroundColor: "#A8201A",
-    },
-  ],
-};
 
 export const Tableau = () => {
   const [toggleData, setToggleData] = useState();
@@ -68,10 +34,10 @@ export const Tableau = () => {
     console.log(bitCoin());
   }, []);
 
-  //graphique
+  //cron
 
   let cronJob = new CronJob(
-    "0 0 11 * * *",
+    "* * * * * *",
     function () {
       fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
         .then((response) => response.json())
@@ -85,6 +51,41 @@ export const Tableau = () => {
     "America/Los_Angeles"
   );
   cronJob.start();
+
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Cours du Bitcoin récent",
+      },
+    },
+  };
+  const labels = ["Juin", "Juil", "Aout", "Sept", "Oct", "Nov", "Dec"];
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Son cours en €",
+        data:
+          // Injecter les données récoltées par le cronJob
+          ["20000", "20000", "20000", "20000", "20000", "20000", "20000"],
+        borderColor: "#A8201A",
+        backgroundColor: "#A8201A",
+      },
+    ],
+  };
 
   return (
     <>
